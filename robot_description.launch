@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- send urdf to param server
+
+robot description needed here for to create param for node spawn_urdf spawn model py file in 
+gazebo described http://gazebosim.org/tutorials?tut=ros_roslaunch&cat=connect_ros 
+
+-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find slam_project)/urdf/slam_project.xacro'" />
+
+
+<!-- Send fake joint values 
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+-->
+
+<!-- Send robot states to tf -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+
+
+
+</launch>
+
